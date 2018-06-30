@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.dannmichelson.CleanCodeApi", "com.dannmichelson.CleanCodeApi\com.dannmichelson.CleanCodeApi.csproj", "{4B9B0290-14EA-4894-84A1-B16A6EB816CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DannMichelson.CleanCodeApi", "DannMichelson.CleanCodeApi\DannMichelson.CleanCodeApi.csproj", "{4B9B0290-14EA-4894-84A1-B16A6EB816CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

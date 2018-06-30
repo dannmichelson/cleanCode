@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace com.dannmichelson.CleanCodeApi.Controllers
+namespace DannMichelson.CleanCodeApi.Controllers
 {
     [RoutePrefix("hello")]
     public class HelloWorldController : ApiController
