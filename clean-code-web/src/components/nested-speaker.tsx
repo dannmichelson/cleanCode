@@ -39,7 +39,9 @@ export class NestedSpeaker extends React.Component<IProps, IState> {
           <p>{speaker.bio}</p>
         </div>
       </div> :
-        speaker.fullName
+        <div className='text-info'>
+          {speaker.fullName} (+)
+        </div>
     );
   }
 

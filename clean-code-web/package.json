@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/reactstrap": "^6.0.0",
+    "bootstrap": "^4.1.1",
     "moment": "^2.22.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts-ts": "2.16.0",
+    "reactstrap": "^6.2.0",
     "tslint": "^5.10.0",
     "tslint-react": "^3.6.0"
   },

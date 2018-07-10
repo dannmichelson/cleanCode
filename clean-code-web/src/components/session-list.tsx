@@ -1,5 +1,6 @@
 import * as Moment from 'moment';
 import * as React from 'react';
+import { Col, Row } from 'reactstrap';
 import { IConferenceInfo, ISession } from '../types';
 import { Session } from './session';
 
@@ -63,11 +64,13 @@ export class SessionList extends React.Component<IProps, IState> {
     </select>;
 
     const getSession = (session: ISession) => {
-      return <Session
+      return <Col key={session.id} xs={12} lg={6} xl={4} className='px-4 border rounded'>
+      <Session
         conferenceInfo={conferenceInfo}
         tracks={tracks}
         session={session}
-      />;
+      />
+      </Col>;
     };
 
     const shouldTrackBySession = (session: ISession) => {
@@ -84,17 +87,21 @@ export class SessionList extends React.Component<IProps, IState> {
       const filteredSessions = conferenceInfo.sessions.filter((session) =>
         shouldTrackBySession(session) && shouldTrackByTime(session)
       );
+
       const sessions = filteredSessions.map((session) => getSession(session));
 
       return <div>
         <h2>Sessions</h2>
-        <div>
-          Filter by Track: {trackDropdown}
-          Filter by Time: {timeDropdown}
-        </div>
-        {sessions}
+        <Row>
+          <Col xm={12} md={6}> Filter by Track: {trackDropdown}</Col>
+          <Col xm={12} md={6}> Filter by Time: {timeDropdown}</Col>
+        </Row>
+        <Row className='mt-4'>
+          {sessions}
+        </Row>
       </div>;
     };
+
     return getSessions();
   }
 }
