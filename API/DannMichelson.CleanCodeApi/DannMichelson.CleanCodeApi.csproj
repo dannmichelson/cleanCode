@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HelloWorldController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -102,6 +103,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DannMichelson.BusinessLogic\DannMichelson.BusinessLogic.csproj">
+      <Project>{1ABDF672-B1AC-40A9-84F5-2A8FB4F3D769}</Project>
+      <Name>DannMichelson.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DannMichelson.Contract\DannMichelson.Contract.csproj">
+      <Project>{3C2E97D7-A2AD-431A-A777-308B905D2FEB}</Project>
+      <Name>DannMichelson.Contract</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

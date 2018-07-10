@@ -2,13 +2,23 @@
 
 namespace DirtyCodeApi.Controllers
 {
-    [RoutePrefix("person")]
+    [RoutePrefix("people")]
     public class PersonController : ApiController
     {
         [Route("")]
+        [HttpGet]
         public IHttpActionResult People()
         {
-            return Ok();
+            return Ok(new Person[] {
+                new Person
+            {
+                First = "Dann",
+                Last = "Michelson",
+                Bio = "Sample Code",
+                TagLine = "TagLine"
+            }});
+
+
         }
     }
 }
