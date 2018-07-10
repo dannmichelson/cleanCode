@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Col, Row } from 'reactstrap';
+import { Button, Col, Jumbotron, Row } from 'reactstrap';
 import './App.css';
 import { SessionList, SpeakerList } from './components';
 import logo from './logo.svg';
@@ -65,18 +65,27 @@ class App extends React.Component<IProps, IState> {
 
     return (
       <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h1 className='App-title'>KCDC 2018</h1>
-        </header>
+        <Jumbotron style={{ padding: '20px' }}>
           <Row>
-            <Col xs={6} md={{ size: 3, offset: 3 }}>
-              <Button block={true} onClick={showSessions} checked={true}>Sessions</Button>
+            <Col xs={12} md={6}>
+              <img src={logo} className='App-logo' alt='logo' />
+              <h1 className='App-title'>KCDC 2018</h1>
             </Col>
-            <Col xs={6} md={3}>
-              <Button block={true} onClick={showSpeakers}>Speakers</Button>
+            <Col xs={12} md={6}>
+              <Button href='http://www.kcdc.info/' color='danger' target='_blank'>
+                Click here to go to the official KCDC page!
+            </Button>
             </Col>
           </Row>
+        </Jumbotron>
+        <Row>
+          <Col xs={6} md={{ size: 3, offset: 3 }}>
+            <Button block={true} onClick={showSessions} checked={true}>Sessions</Button>
+          </Col>
+          <Col xs={6} md={3}>
+            <Button block={true} onClick={showSpeakers}>Speakers</Button>
+          </Col>
+        </Row>
         {itemsToDisplay()}
       </div>
     );
