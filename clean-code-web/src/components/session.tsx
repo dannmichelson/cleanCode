@@ -1,3 +1,4 @@
+import * as Moment from 'moment';
 import * as React from 'react';
 import { ICategory, IConferenceInfo, ISession } from '../types';
 import { NestedSpeaker } from './index';
@@ -32,6 +33,6 @@ export const Session: React.SFC<ISessionProps> = (props) => {
     <p>{props.session.description}</p>
     <div>Speaker: <NestedSpeaker speaker={getSpeaker()} /></div>
     <div>Track: {getTrackName()}</div>
-    <div>Time: {props.session.startsAt}</div>
+    <div>Time: {Moment(props.session.startsAt).format('dddd, hh:mm a')}</div>
   </div>;
 };

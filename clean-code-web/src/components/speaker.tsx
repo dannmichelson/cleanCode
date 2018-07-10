@@ -1,3 +1,4 @@
+import * as Moment from 'moment';
 import * as React from 'react';
 import { IConferenceInfo, ISpeaker } from '../types';
 
@@ -35,8 +36,10 @@ export class Speaker extends React.Component<IProps, IState> {
         return <div key={sessionId}>{sessionId}</div>;
       }
 
+      const startDateTime = Moment(session.startsAt).format('dddd, hh:mm a');
+
       return <div key={sessionId}>
-        {session.title}: {session.startsAt} in {session.room ? session.room.name : 'tbd'}
+        {session.title}: {startDateTime} in {session.room ? session.room.name : 'tbd'}
       </div>;
     });
 
