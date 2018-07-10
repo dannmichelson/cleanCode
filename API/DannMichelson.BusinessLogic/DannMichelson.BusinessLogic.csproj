@@ -48,6 +48,14 @@
       <Project>{3C2E97D7-A2AD-431A-A777-308B905D2FEB}</Project>
       <Name>DannMichelson.Contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DannMichelson.Domain\DannMichelson.Domain.csproj">
+      <Project>{6A2D69BF-070F-437E-BCED-653063CFBF23}</Project>
+      <Name>DannMichelson.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DannMichelson.Repository\DannMichelson.Repository.csproj">
+      <Project>{05EBFBB4-C58D-4CCD-9545-D9C1DE50987D}</Project>
+      <Name>DannMichelson.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

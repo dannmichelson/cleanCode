@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DannMichelson.BusinessLogic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DannMichelson.Contract", "DannMichelson.Contract\DannMichelson.Contract.csproj", "{3C2E97D7-A2AD-431A-A777-308B905D2FEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DannMichelson.Domain", "DannMichelson.Domain\DannMichelson.Domain.csproj", "{6A2D69BF-070F-437E-BCED-653063CFBF23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DannMichelson.Repository", "DannMichelson.Repository\DannMichelson.Repository.csproj", "{05EBFBB4-C58D-4CCD-9545-D9C1DE50987D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{3C2E97D7-A2AD-431A-A777-308B905D2FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C2E97D7-A2AD-431A-A777-308B905D2FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C2E97D7-A2AD-431A-A777-308B905D2FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2D69BF-070F-437E-BCED-653063CFBF23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2D69BF-070F-437E-BCED-653063CFBF23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2D69BF-070F-437E-BCED-653063CFBF23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2D69BF-070F-437E-BCED-653063CFBF23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05EBFBB4-C58D-4CCD-9545-D9C1DE50987D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05EBFBB4-C58D-4CCD-9545-D9C1DE50987D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05EBFBB4-C58D-4CCD-9545-D9C1DE50987D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05EBFBB4-C58D-4CCD-9545-D9C1DE50987D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

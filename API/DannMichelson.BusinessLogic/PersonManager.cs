@@ -1,19 +1,33 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DannMichelson.Contract.Interface;
 using DannMichelson.Contract.Model;
+using DannMichelson.Repository;
 
 namespace DannMichelson.BusinessLogic
 {
     public class PersonManager : IPersonManager
     {
+        private readonly IPersonRepository _personRepository;
+
+        public PersonManager()
+        {
+            _personRepository = new PersonRepository();
+        }
+
         public IEnumerable<Person> GetAllPeople()
         {
-            yield return new Person
+            return _personRepository.GetPeople().Select(MapPerson);
+        }
+
+        public Person MapPerson(Domain.Models.Person person)
+        {
+            return new Person
             {
-                FirstName = "Dann",
-                LastName = "Michelson",
-                Bio = "Sample Code",
-                TagLine = "My tagline!"
+                Bio = person.Bio,
+                FirstName = person.FirstName,
+                TagLine = person.TagLine,
+                LastName = person.LastName
             };
         }
     }
