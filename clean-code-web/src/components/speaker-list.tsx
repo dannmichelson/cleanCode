@@ -28,7 +28,6 @@ export class SpeakerList extends React.Component<IProps, IState> {
           key={speaker.id}
           conferenceInfo={this.props.conferenceInfo}
           speaker={speaker}
-          isExpanded={true}
         />
       </Col>
     };
@@ -42,13 +41,18 @@ export class SpeakerList extends React.Component<IProps, IState> {
     const { nameFilterValue } = this.state;
 
     const speakers = this.props.conferenceInfo.speakers.map((speaker) => this.getSpeaker(speaker));
+
+    const containsCaseInsensitive = (container: string, searchText: string) => {
+      return container.toLowerCase().indexOf(searchText.toLowerCase()) >= 0;
+    };
+
     const filteredSpeakers = speakers.filter((speaker) => {
-      return !nameFilterValue || speaker.fullName.toLowerCase().indexOf(nameFilterValue.toLowerCase()) >= 0;
+      return !nameFilterValue || containsCaseInsensitive(speaker.fullName, nameFilterValue);
     });
 
     return (<div>
       <h2>Speakers</h2>
-        Filter by name:
+      Filter by name:
       <input type='text' onChange={this.handleNameChange} id='nameFilter' value={this.state.nameFilterValue} />
       <Row className='mt-5'>
         {filteredSpeakers.map((speaker) => speaker.display)}

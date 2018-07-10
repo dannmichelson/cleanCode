@@ -4,7 +4,6 @@ import { IConferenceInfo, ISpeaker } from '../types';
 
 interface IProps {
   speaker?: ISpeaker;
-  isExpanded?: boolean;
   conferenceInfo: IConferenceInfo;
 }
 interface IState {
@@ -14,17 +13,9 @@ interface IState {
 export class Speaker extends React.Component<IProps, IState> {
   constructor(props: Readonly<IProps>) {
     super(props);
-
-    this.state = { isExpanded: props.isExpanded || false };
-  }
-
-  public toggle = () => {
-    const isExpanded = this.state.isExpanded;
-    this.setState({ isExpanded: !isExpanded });
   }
 
   public getDisplay() {
-    const { isExpanded } = this.state;
     const { speaker } = this.props;
     if (!speaker) {
       return ('');
@@ -50,7 +41,7 @@ export class Speaker extends React.Component<IProps, IState> {
       </div>;
 
     return (
-      isExpanded ? <div>
+      <div>
         <h3>
           {speaker.fullName}
         </h3>
@@ -60,14 +51,13 @@ export class Speaker extends React.Component<IProps, IState> {
           <p>{speaker.bio}</p>
         </div>
         {sessionBlock}
-      </div> :
-        speaker.fullName
+      </div>
     );
   }
 
   public render() {
     return (
-      <div onClick={this.toggle}>
+      <div>
         {this.getDisplay()}
       </div>
     );
