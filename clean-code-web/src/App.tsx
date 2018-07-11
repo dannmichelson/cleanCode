@@ -11,6 +11,7 @@ interface IProps {
 interface IState {
   conferenceInfo: IConferenceInfo;
   display: string;
+  initialSpeakerNameSearch?: string;
 }
 
 class App extends React.Component<IProps, IState> {
@@ -49,6 +50,13 @@ class App extends React.Component<IProps, IState> {
       );
   }
 
+  public preloadSpeakers = () => {
+    this.setState({
+      display: 'speakers',
+      initialSpeakerNameSearch: 'Dann Michelson'
+   });
+  }
+
   public render() {
     const showSpeakers = () => this.changeDisplay('speakers');
     const showSessions = () => this.changeDisplay('sessions');
@@ -56,7 +64,10 @@ class App extends React.Component<IProps, IState> {
     const itemsToDisplay = () => {
       switch (this.state.display) {
         case 'speakers':
-          return (<SpeakerList conferenceInfo={this.state.conferenceInfo} />);
+          return (<SpeakerList
+            conferenceInfo={this.state.conferenceInfo}
+            initialNameSearch={this.state.initialSpeakerNameSearch}
+          />);
         case 'sessions':
         default:
           return (<SessionList conferenceInfo={this.state.conferenceInfo} />);
@@ -68,7 +79,7 @@ class App extends React.Component<IProps, IState> {
         <Jumbotron style={{ padding: '20px' }}>
           <Row>
             <Col xs={12} md={6}>
-              <img src={logo} className='App-logo' alt='logo' />
+              <img src={logo} className='App-logo' alt='logo' onClick={this.preloadSpeakers} />
               <h1 className='App-title'>KCDC 2018</h1>
             </Col>
             <Col xs={12} md={6}>

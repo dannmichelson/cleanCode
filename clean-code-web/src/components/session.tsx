@@ -4,50 +4,72 @@ import { Col, Row } from 'reactstrap';
 import { ICategory, IConferenceInfo, ISession } from '../types';
 import { NestedSpeaker } from './index';
 
-interface ISessionProps {
+interface IProps {
   session: ISession;
   tracks?: ICategory;
   conferenceInfo: IConferenceInfo;
+  startMarked: boolean;
+  storeMarkedSessionIds: (sessionId: number, shouldAdd: boolean) => number[];
+}
+interface IState {
+  marked: boolean;
 }
 
-export const Session: React.SFC<ISessionProps> = (props) => {
-  const getSpeaker = () => {
-    const speakerId = props.session.speakers[0];
-    const speaker = props.conferenceInfo.speakers.find((s) => s.id === speakerId);
-    return speaker;
-  };
+export class Session extends React.Component<IProps, IState> {
+  constructor(props: Readonly<IProps>) {
+    super(props);
 
-  const getTrackName = () => {
-    if (!props.tracks) {
-      return '';
-    }
+    this.state = { marked: props.startMarked };
+  }
 
-    const track = props.tracks.items.find((category) =>
-      props.session.categoryItems.some((categoryId) => category.id === categoryId)
-    );
+  public toggleMarked = () => {
+    const marked = !this.state.marked;
+    this.setState({ marked });
+    this.props.storeMarkedSessionIds(this.props.session.id, marked);
+  }
 
-    return track ? track.name : '';
-  };
+  public render() {
+    const { session, conferenceInfo, tracks } = this.props;
+    const getSpeaker = () => {
+      const speakerId = session.speakers[0];
+      const speaker = conferenceInfo.speakers.find((s) => s.id === speakerId);
+      return speaker;
+    };
 
-  const getRoom = () => {
-    if (!props.session.room) {
-      return '?';
-    }
-    return props.session.room.name;
-  };
+    const getTrackName = () => {
+      if (!tracks) {
+        return '';
+      }
 
-  return <div>
-    <Row className='d-flex justify-content-center'>
-      <h3>{props.session.title}</h3>
-    </Row>
-    <Row>
-      <p>{props.session.description}</p>
-    </Row>
-    <Row>
-      <Col xs={4}><h5>Track:</h5>{getTrackName()}</Col>
-      <Col xs={4}><h5>Room:</h5>{getRoom()}</Col>
-      <Col xs={4}><h5>Time:</h5>{Moment(props.session.startsAt).format('dddd, hh:mm a')}</Col>
-      <Col xs={12}><h5>Speaker:</h5><NestedSpeaker speaker={getSpeaker()} /></Col>
-    </Row>
-  </div>;
-};
+      const track = tracks.items.find((category) =>
+        session.categoryItems.some((categoryId) => category.id === categoryId)
+      );
+
+      return track ? track.name : '';
+    };
+
+    const getRoom = () => {
+      if (!session.room) {
+        return '?';
+      }
+      return session.room.name;
+    };
+
+    const markedBgColor = this.state.marked ? 'bg-info' : '';
+
+    return <div>
+      <Row className={`d-flex justify-content-center ${markedBgColor}`} onClick={this.toggleMarked}>
+        <h3>{session.title}</h3>
+      </Row>
+      <Row>
+        <p>{session.description}</p>
+      </Row>
+      <Row>
+        <Col xs={4}><h5>Track:</h5>{getTrackName()}</Col>
+        <Col xs={4}><h5>Room:</h5>{getRoom()}</Col>
+        <Col xs={4}><h5>Time:</h5>{Moment(session.startsAt).format('dddd, hh:mm a')}</Col>
+        <Col xs={12}><h5>Speaker:</h5><NestedSpeaker speaker={getSpeaker()} /></Col>
+      </Row>
+    </div >;
+  }
+}

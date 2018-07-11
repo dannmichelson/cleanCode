@@ -30,7 +30,7 @@ export class Speaker extends React.Component<IProps, IState> {
       const startDateTime = Moment(session.startsAt).format('dddd, hh:mm a');
 
       return <div key={sessionId}>
-        {session.title}: {startDateTime} in {session.room ? session.room.name : 'tbd'}
+        {session.title}: {startDateTime} in room {session.room ? session.room.name : 'tbd'}
       </div>;
     });
 

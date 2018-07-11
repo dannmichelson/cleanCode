@@ -5,6 +5,7 @@ import { Speaker } from './index';
 
 interface IProps {
   conferenceInfo: IConferenceInfo;
+  initialNameSearch?: string;
 }
 interface IState {
   nameFilterValue: string;
@@ -15,7 +16,7 @@ export class SpeakerList extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
-      nameFilterValue: ''
+      nameFilterValue: this.props.initialNameSearch ? this.props.initialNameSearch : '',
     };
   }
 
