@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http;
 using DirtyCodeApi.Data;
 
 namespace DirtyCodeApi.Controllers
@@ -22,9 +23,27 @@ namespace DirtyCodeApi.Controllers
 
         [Route("")]
         [HttpPut]
-        public IHttpActionResult Save(Person p)
+        public IHttpActionResult InsertOrSavePerson(Person p)
         {
             return Ok(new PersonData().UpdateOrInsertPerson(p));
+        }
+
+        [Route("FirstNames")]
+        public IHttpActionResult GetFirstNames()
+        {
+            var allPeople = new PersonData().GetPeople();
+            List<string> names = new List<string>();
+            foreach(var person in allPeople)
+            {
+                var firstName = person.First;
+                firstName = firstName.Trim();
+                if(!names.Contains(firstName))
+                {
+                    names.Add(firstName);
+                }
+            }
+
+            return Ok(names);
         }
     }
 }
