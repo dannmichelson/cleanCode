@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using DirtyCodeApi.Data;
 
 namespace DirtyCodeApi.Controllers
 {
@@ -9,16 +10,21 @@ namespace DirtyCodeApi.Controllers
         [HttpGet]
         public IHttpActionResult People()
         {
-            return Ok(new Person[] {
-                new Person
-            {
-                First = "Dann",
-                Last = "Michelson",
-                Bio = "Sample Code",
-                TagLine = "TagLine"
-            }});
+            return Ok(new PersonData().GetPeople());
+        }
 
+        [Route("name/{name}")]
+        [HttpGet]
+        public IHttpActionResult ByName(string name)
+        {
+            return Ok(new PersonData().GetPeople(name));
+        }
 
+        [Route("")]
+        [HttpPut]
+        public IHttpActionResult Save(Person p)
+        {
+            return Ok(new PersonData().UpdateOrInsertPerson(p));
         }
     }
 }
