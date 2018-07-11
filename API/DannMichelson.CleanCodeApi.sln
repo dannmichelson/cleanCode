@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DannMichelson.BusinessLogic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DannMichelson.Contract", "DannMichelson.Contract\DannMichelson.Contract.csproj", "{3C2E97D7-A2AD-431A-A777-308B905D2FEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DannMichelson.Repository", "DannMichelson.Repository\DannMichelson.Repository.csproj", "{4EDC1547-A705-444B-8F61-12E60B25F97D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3C2E97D7-A2AD-431A-A777-308B905D2FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C2E97D7-A2AD-431A-A777-308B905D2FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C2E97D7-A2AD-431A-A777-308B905D2FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDC1547-A705-444B-8F61-12E60B25F97D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDC1547-A705-444B-8F61-12E60B25F97D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDC1547-A705-444B-8F61-12E60B25F97D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDC1547-A705-444B-8F61-12E60B25F97D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
