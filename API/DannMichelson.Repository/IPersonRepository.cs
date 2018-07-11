@@ -10,5 +10,7 @@ namespace DannMichelson.Repository
     public interface IPersonRepository
     {
         IEnumerable<Person> GetPeople();
+        IEnumerable<Person> GetPeople(string lastName);
+        Person InsertOrUpdatePerson(Person person);
     }
 }

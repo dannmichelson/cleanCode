@@ -15,7 +15,7 @@ namespace DannMichelson.Domain
         {
         }
 
-        public static ICleanCodeDbContext GetContext()
+        public static CleanCodeDbContext GetContext()
         {
             return new CleanCodeDbContext();
         }
