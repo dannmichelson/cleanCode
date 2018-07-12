@@ -51,8 +51,25 @@ namespace DirtyCodeApi.Controllers
             p.Bio = p.Bio.Trim();
             p.TagLine = p.TagLine.Trim();
 
-            return Ok(new DirtyCodeApi.Data.PersonData().UpdateOrInsertPerson(p));
+            if(!ValidatePerson(p))
+            {
+                throw new Exception("bad request");
+            }
 
+            return Ok(new DirtyCodeApi.Data.PersonData().UpdateOrInsertPerson(p));
+        }
+
+        private bool ValidatePerson(Person person)
+        {
+            if(!string.IsNullOrWhiteSpace(person.First))
+            {
+                return false;
+            }
+            else if(!string.IsNullOrWhiteSpace(person.Last)) return false;
+            else if(!string.IsNullOrWhiteSpace(person.Bio))
+                return false;
+
+            return true;
         }
 
         [Route("FirstNames")]
@@ -65,9 +82,7 @@ namespace DirtyCodeApi.Controllers
                 var firstName = person.First;
                 firstName = firstName.Trim();
                 if(!names.Contains(firstName))
-                {
                     names.Add(firstName);
-                }
             }
 
             return Ok(names);
