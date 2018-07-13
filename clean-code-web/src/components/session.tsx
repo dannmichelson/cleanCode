@@ -1,7 +1,7 @@
 import * as Moment from 'moment';
 import * as React from 'react';
 import { Col, Row } from 'reactstrap';
-import { ICategory, IConferenceInfo, ISession } from '../types';
+import { ICategory, IConferenceInfo, ISession, ISpeaker } from '../types';
 import { NestedSpeaker } from './index';
 
 interface IProps {
@@ -30,10 +30,19 @@ export class Session extends React.Component<IProps, IState> {
 
   public render() {
     const { session, conferenceInfo, tracks } = this.props;
-    const getSpeaker = () => {
-      const speakerId = session.speakers[0];
+    const getSpeaker = (speakerId?: string) => {
+      if (!speakerId) {
+        speakerId = session.speakers[0];
+      }
       const speaker = conferenceInfo.speakers.find((s) => s.id === speakerId);
       return speaker;
+    };
+
+    const getSpeakers = () => {
+      const speakers = session.speakers.map((speaker) => getSpeaker(speaker));
+      return speakers.filter((speaker) => !!speaker).map((speaker: ISpeaker) => {
+        return <NestedSpeaker key={speaker.id} speaker={speaker} />;
+      });
     };
 
     const getTrackName = () => {
@@ -68,7 +77,7 @@ export class Session extends React.Component<IProps, IState> {
         <Col xs={4}><h5>Track:</h5>{getTrackName()}</Col>
         <Col xs={4}><h5>Room:</h5>{getRoom()}</Col>
         <Col xs={4}><h5>Time:</h5>{Moment(session.startsAt).format('dddd, hh:mm a')}</Col>
-        <Col xs={12}><h5>Speaker:</h5><NestedSpeaker speaker={getSpeaker()} /></Col>
+        <Col xs={12}><h5>Speaker:</h5>{getSpeakers()}</Col>
       </Row>
     </div >;
   }

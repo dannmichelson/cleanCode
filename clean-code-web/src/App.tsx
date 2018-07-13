@@ -84,7 +84,7 @@ class App extends React.Component<IProps, IState> {
             </Col>
             <Col xs={12} md={6}>
               <Button href='http://www.kcdc.info/' color='danger' target='_blank'>
-                Click here to go to the official KCDC page!
+                Click here to go to<br/>the official KCDC page!
             </Button>
             </Col>
           </Row>
@@ -95,6 +95,11 @@ class App extends React.Component<IProps, IState> {
           </Col>
           <Col xs={6} md={3}>
             <Button block={true} onClick={showSpeakers}>Speakers</Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            Copyright 2018
           </Col>
         </Row>
         {itemsToDisplay()}
