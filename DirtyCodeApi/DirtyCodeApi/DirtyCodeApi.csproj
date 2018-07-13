@@ -99,7 +99,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\XmlCommentsFinder.cs" />
     <Compile Include="Controllers\HelloWorldController.cs" />
-    <Compile Include="Controllers\People.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Data\PersonData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

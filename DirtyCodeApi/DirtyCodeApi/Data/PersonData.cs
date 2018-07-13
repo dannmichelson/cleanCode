@@ -28,10 +28,10 @@ namespace DirtyCodeApi.Data
             }
         }
 
-        public IEnumerable<Person> GetPeople(string name)
+        public IEnumerable<Person> GetPeopleByLastName(string lastName)
         {
             using (var c = new SqlConnection(ConfigurationManager.ConnectionStrings["CleanCodeDb"].ConnectionString))
-                return c.Query<PersonDatabase>($"SELECT * FROM person where lastName like '%{name}%'").Select(x =>
+                return c.Query<PersonDatabase>($"SELECT * FROM person where lastName like '%{lastName}%'").Select(x =>
                 {
                     x.Last = x.LastName;
                     x.First = x.FirstName;

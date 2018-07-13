@@ -8,21 +8,21 @@ using DirtyCodeApi.Data;
 
 namespace DirtyCodeApi.Controllers
 {
-    [RoutePrefix("people")]
+    [RoutePrefix("person")]
     public class PersonController : ApiController
     {
-        private IPrincipal Identity;
+        private IPrincipal _identity;
 
         public PersonController()
         {
-            this.Identity = this.User;
+            this._identity = this.User;
         }
 
         [Route("")]
         [HttpGet]
         public IHttpActionResult People()
         {
-            if(this.Identity.Identity.IsAuthenticated && this.Identity.IsInRole("C9REB"))
+            if(this._identity.Identity.IsAuthenticated && this._identity.IsInRole("C9REB"))
             {
                 return BadRequest();
             }
@@ -30,11 +30,11 @@ namespace DirtyCodeApi.Controllers
             return Ok(new PersonData().GetPeople());
         }
 
-        [Route("name/{name}")]
+        [Route("lastName/{lastName}")]
         [HttpGet]
-        public IHttpActionResult ByName(string name)
+        public IHttpActionResult ByLastName(string lastName)
         {
-            return Ok(new DirtyCodeApi.Data.PersonData().GetPeople(name));
+            return Ok(new DirtyCodeApi.Data.PersonData().GetPeopleByLastName(lastName));
         }
 
         [Route("")]
@@ -65,14 +65,21 @@ namespace DirtyCodeApi.Controllers
             {
                 return false;
             }
-            else if(!string.IsNullOrWhiteSpace(person.Last)) return false;
-            else if(!string.IsNullOrWhiteSpace(person.Bio))
+
+            if(!string.IsNullOrWhiteSpace(person.Last))
+            {
                 return false;
+            }
+
+            if(!string.IsNullOrWhiteSpace(person.Bio))
+            {
+                return false;
+            }
 
             return true;
         }
 
-        [Route("FirstNames")]
+        [Route("firstNames")]
         public IHttpActionResult GetFirstNames()
         {
             var allPeople = new PersonData().GetPeople();
