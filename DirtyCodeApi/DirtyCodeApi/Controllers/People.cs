@@ -22,7 +22,7 @@ namespace DirtyCodeApi.Controllers
         [HttpGet]
         public IHttpActionResult People()
         {
-            if(this.Identity.Identity.IsAuthenticated && this.Identity.IsInRole("NoPeople"))
+            if(this.Identity.Identity.IsAuthenticated && this.Identity.IsInRole("C9REB"))
             {
                 return BadRequest();
             }
