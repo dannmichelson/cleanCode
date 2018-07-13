@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirtyCodeApi", "DirtyCodeApi\DirtyCodeApi.csproj", "{CB1067C1-9F03-47BB-86F5-CBD42CA98A81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirtyCodeRepository", "DirtyCodeRepository\DirtyCodeRepository.csproj", "{AA2A4F51-1128-4D0C-B6D9-53B9590C277C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirtyCodeContract", "DirtyCodeContract\DirtyCodeContract.csproj", "{54B2253D-053B-400C-93FE-3419C089B661}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{CB1067C1-9F03-47BB-86F5-CBD42CA98A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB1067C1-9F03-47BB-86F5-CBD42CA98A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB1067C1-9F03-47BB-86F5-CBD42CA98A81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA2A4F51-1128-4D0C-B6D9-53B9590C277C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA2A4F51-1128-4D0C-B6D9-53B9590C277C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA2A4F51-1128-4D0C-B6D9-53B9590C277C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA2A4F51-1128-4D0C-B6D9-53B9590C277C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54B2253D-053B-400C-93FE-3419C089B661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54B2253D-053B-400C-93FE-3419C089B661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54B2253D-053B-400C-93FE-3419C089B661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54B2253D-053B-400C-93FE-3419C089B661}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

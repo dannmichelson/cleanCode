@@ -4,7 +4,8 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Principal;
 using System.Web.Http;
-using DirtyCodeApi.Data;
+using DirtyCodeContract;
+using DirtyCodeRepository;
 
 namespace DirtyCodeApi.Controllers
 {
@@ -22,7 +23,7 @@ namespace DirtyCodeApi.Controllers
         [HttpGet]
         public IHttpActionResult People()
         {
-            if(this._identity.Identity.IsAuthenticated && this._identity.IsInRole("C9REB"))
+            if(_identity.Identity.IsAuthenticated && _identity.IsInRole("C9REB"))
             {
                 return BadRequest();
             }
@@ -30,48 +31,54 @@ namespace DirtyCodeApi.Controllers
             return Ok(new PersonData().GetPeople());
         }
 
+
+        /// <summary>
+        /// Gets All People who's last name contains the input
+        /// </summary>
+        /// <param name="lastName"></param>
+        /// <returns></returns>
         [Route("lastName/{lastName}")]
         [HttpGet]
         public IHttpActionResult ByLastName(string lastName)
         {
-            return Ok(new DirtyCodeApi.Data.PersonData().GetPeopleByLastName(lastName));
+            return Ok(new PersonData().GetPeopleByLastName(lastName));
         }
 
         [Route("")]
         [HttpPut]
-        public IHttpActionResult InsertOrSavePerson(Person p)
+        public IHttpActionResult InsertOrSavePerson(Person person)
         {
-            if(p.First == null || p.First == "")
+            if(person.First == null || person.First == "")
             {
                 throw new Exception("Bad Data - first Name is not populated.");
             }
 
-            p.First = p.First.Trim();
-            p.Last = p.Last.Trim();
-            p.Bio = p.Bio.Trim();
-            p.TagLine = p.TagLine.Trim();
+            person.First = person.First.Trim();
+            person.Last = person.Last.Trim();
+            person.Bio = person.Bio.Trim();
+            person.TagLine = person.TagLine.Trim();
 
-            if(!ValidatePerson(p))
+            if(!ValidatePerson(person))
             {
                 throw new Exception("bad request");
             }
 
-            return Ok(new DirtyCodeApi.Data.PersonData().UpdateOrInsertPerson(p));
+            return Ok(new PersonData().UpdateOrInsertPerson(person));
         }
 
         private bool ValidatePerson(Person person)
         {
-            if(!string.IsNullOrWhiteSpace(person.First))
+            if(string.IsNullOrWhiteSpace(person.First))
             {
                 return false;
             }
 
-            if(!string.IsNullOrWhiteSpace(person.Last))
+            if(string.IsNullOrWhiteSpace(person.Last))
             {
                 return false;
             }
 
-            if(!string.IsNullOrWhiteSpace(person.Bio))
+            if(string.IsNullOrWhiteSpace(person.Bio))
             {
                 return false;
             }

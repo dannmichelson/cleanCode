@@ -1,4 +1,4 @@
-﻿namespace DirtyCodeApi
+﻿namespace DirtyCodeContract
 {
     public class Person
     {
