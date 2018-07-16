@@ -97,12 +97,12 @@ class App extends React.Component<IProps, IState> {
             <Button block={true} onClick={showSpeakers}>Speakers</Button>
           </Col>
         </Row>
+        {itemsToDisplay()}
         <Row>
           <Col xs={12}>
             Copyright 2018
           </Col>
         </Row>
-        {itemsToDisplay()}
       </div>
     );
   }
